@@ -51,17 +51,33 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			fontFamily: {
+				'sans': ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+				'display': ['Space Grotesk', 'system-ui', 'sans-serif'],
+			},
+			backgroundImage: {
+				'gradient-nexorus': 'var(--gradient-primary)',
+				'gradient-secondary': 'var(--gradient-secondary)',
+				'gradient-accent': 'var(--gradient-accent)',
+				'gradient-text': 'var(--gradient-text)',
+			},
+			animation: {
+				'gradient-shift': 'gradient-shift 10s ease infinite',
+				'float': 'float 6s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite alternate',
+				'gradient-text': 'gradient-text 3s ease infinite',
+				'fade-in-up': 'fade-in-up 0.8s ease-out',
+				'fade-in-scale': 'fade-in-scale 0.6s ease-out',
+			},
+			spacing: {
+				'apple-xs': '0.5rem',
+				'apple-sm': '1rem',
+				'apple-md': '2rem',
+				'apple-lg': '4rem',
+				'apple-xl': '6rem',
+				'apple-2xl': '8rem',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
