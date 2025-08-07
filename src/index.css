@@ -8,49 +8,48 @@
 
 @layer base {
   :root {
-    /* Core gradient colors inspired by Stripe */
+    /* Core gradient colors for selective use */
     --gradient-primary: linear-gradient(120deg, #ff5fa2, #6a75ff, #20d1e0, #ffd25e);
     --gradient-secondary: linear-gradient(135deg, #ff5fa2 0%, #6a75ff 50%, #20d1e0 100%);
     --gradient-accent: linear-gradient(90deg, #20d1e0, #ffd25e);
     --gradient-text: linear-gradient(120deg, #ff5fa2, #6a75ff);
     
-    /* Semantic colors - all HSL for consistency */
-    --background: 220 20% 5%;
-    --foreground: 0 0% 98%;
+    /* Apple-style light theme */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3%;
     
-    --card: 220 20% 8%;
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3%;
     
     --primary: 265 85% 70%;
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 195 85% 65%;
-    --secondary-foreground: 220 20% 5%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
     
-    --accent: 340 85% 65%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 9%;
     
-    --muted: 220 15% 15%;
-    --muted-foreground: 220 10% 65%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
     
-    --border: 220 15% 20%;
-    --input: 220 15% 15%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
     --ring: 265 85% 70%;
     
-    --destructive: 0 85% 65%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
     
     --radius: 1rem;
     
-    /* Glass morphism effects */
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    /* Apple-style subtle effects */
+    --apple-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --apple-shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --apple-blur: blur(20px) saturate(180%);
     
-    /* Glow effects */
+    /* Glow effects for selective use */
     --glow-primary: 0 0 40px hsl(var(--primary) / 0.3);
-    --glow-secondary: 0 0 40px hsl(var(--secondary) / 0.3);
-    --glow-accent: 0 0 40px hsl(var(--accent) / 0.3);
+    --glow-gradient: 0 0 60px rgba(255, 95, 162, 0.2);
     
     /* Animation timings */
     --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -74,7 +73,22 @@
 }
 
 @layer components {
-  /* Gradient backgrounds */
+  /* Apple-style card */
+  .apple-card {
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow: var(--apple-shadow);
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .apple-card-lg {
+    background: white;
+    border-radius: 2rem;
+    box-shadow: var(--apple-shadow-lg);
+    border: 1px solid hsl(var(--border));
+  }
+  
+  /* Gradient elements for selective use */
   .bg-gradient-nexorus {
     background: var(--gradient-primary);
     background-size: 400% 400%;
@@ -89,7 +103,7 @@
     background: var(--gradient-accent);
   }
   
-  /* Text gradients */
+  /* Text gradients for headlines */
   .text-gradient-primary {
     background: var(--gradient-text);
     -webkit-background-clip: text;
@@ -97,56 +111,36 @@
     background-clip: text;
   }
   
-  /* Glass morphism */
-  .glass {
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
+  /* Apple-style blur effects */
+  .apple-blur {
+    backdrop-filter: var(--apple-blur);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
   
-  /* Glow effects */
-  .glow-primary {
-    box-shadow: var(--glow-primary);
+  /* Selective glow effects */
+  .glow-gradient {
+    box-shadow: var(--glow-gradient);
   }
   
-  .glow-secondary {
-    box-shadow: var(--glow-secondary);
-  }
-  
-  .glow-accent {
-    box-shadow: var(--glow-accent);
-  }
-  
-  /* Hover glow states */
-  .hover-glow-primary {
+  /* Hover effects */
+  .hover-lift {
     transition: var(--transition-smooth);
   }
   
-  .hover-glow-primary:hover {
-    box-shadow: var(--glow-primary), 0 0 80px hsl(var(--primary) / 0.2);
-    transform: translateY(-2px);
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--apple-shadow-lg);
   }
   
-  .hover-glow-secondary:hover {
-    box-shadow: var(--glow-secondary), 0 0 80px hsl(var(--secondary) / 0.2);
-    transform: translateY(-2px);
-  }
-  
-  /* Floating animation */
-  .float {
+  /* Floating animation for gradients only */
+  .float-gradient {
     animation: float 6s ease-in-out infinite;
   }
   
-  /* Pulse glow */
-  .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite alternate;
-  }
-  
-  /* Gradient text animation */
-  .animate-gradient-text {
-    background-size: 200% 200%;
-    animation: gradient-text 3s ease infinite;
+  /* Minimal animations */
+  .fade-in-apple {
+    animation: fade-in-up 0.8s ease-out;
   }
 }
 
@@ -159,13 +153,14 @@
   .space-apple-xl { @apply space-y-24; }
   .space-apple-2xl { @apply space-y-32; }
   
+  /* Apple-style text sizes */
+  .text-apple-hero { @apply text-7xl lg:text-8xl font-bold leading-none; }
+  .text-apple-title { @apply text-5xl lg:text-6xl font-bold leading-tight; }
+  .text-apple-subtitle { @apply text-xl lg:text-2xl font-light; }
+  
   /* Smooth transitions */
   .smooth-transition {
     transition: var(--transition-smooth);
-  }
-  
-  .bounce-transition {
-    transition: var(--transition-bounce);
   }
 }
 

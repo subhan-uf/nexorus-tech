@@ -6,39 +6,39 @@ const MockInterface = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
 
   return (
-    <section className="py-32 relative">
+    <section className="py-32 bg-white relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-6xl font-bold text-white font-display mb-6">
+          <h2 className="text-apple-title text-black font-display mb-6">
             Command Your
-            <span className="block text-gradient-primary bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="block text-gradient-primary">
               Digital Empire
             </span>
           </h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Every agent, workflow, and system under one unified control plane
           </p>
         </div>
 
         {/* Full-width dashboard mockup */}
         <div className="max-w-7xl mx-auto">
-          <div className="glass rounded-3xl p-8 hover-glow-primary">
+          <div className="apple-card-lg p-8 hover-lift">
             {/* Top bar */}
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center space-x-6">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg"></div>
-                  <span className="text-white font-semibold text-xl">NEXORUS</span>
+                  <div className="w-8 h-8 bg-gradient-nexorus rounded-lg"></div>
+                  <span className="text-black font-semibold text-xl">NEXORUS</span>
                 </div>
-                <div className="h-6 w-px bg-white/20"></div>
-                <span className="text-white/60">Production Environment</span>
+                <div className="h-6 w-px bg-gray-300"></div>
+                <span className="text-gray-500">Production Environment</span>
               </div>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-2 px-3 py-1 bg-green-500/20 rounded-full">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-green-400 text-sm">All systems operational</span>
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-green-600 text-sm">All systems operational</span>
                 </div>
-                <Button variant="glass" size="sm">
+                <Button variant="apple-white" size="sm">
                   <Settings className="w-4 h-4" />
                 </Button>
               </div>
@@ -52,8 +52,8 @@ const MockInterface = () => {
                     onClick={() => setActiveTab("dashboard")}
                     className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
                       activeTab === "dashboard" 
-                        ? "bg-purple-500/20 text-white border border-purple-500/30" 
-                        : "text-white/60 hover:text-white hover:bg-white/5"
+                        ? "bg-purple-500/10 text-black border border-purple-200" 
+                        : "text-gray-500 hover:text-black hover:bg-gray-50"
                     }`}
                   >
                     <BarChart3 className="w-5 h-5" />
@@ -63,8 +63,8 @@ const MockInterface = () => {
                     onClick={() => setActiveTab("agents")}
                     className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
                       activeTab === "agents" 
-                        ? "bg-purple-500/20 text-white border border-purple-500/30" 
-                        : "text-white/60 hover:text-white hover:bg-white/5"
+                        ? "bg-purple-500/10 text-black border border-purple-200" 
+                        : "text-gray-500 hover:text-black hover:bg-gray-50"
                     }`}
                   >
                     <Activity className="w-5 h-5" />
@@ -74,8 +74,8 @@ const MockInterface = () => {
                     onClick={() => setActiveTab("users")}
                     className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
                       activeTab === "users" 
-                        ? "bg-purple-500/20 text-white border border-purple-500/30" 
-                        : "text-white/60 hover:text-white hover:bg-white/5"
+                        ? "bg-purple-500/10 text-black border border-purple-200" 
+                        : "text-gray-500 hover:text-black hover:bg-gray-50"
                     }`}
                   >
                     <Users className="w-5 h-5" />
@@ -89,9 +89,9 @@ const MockInterface = () => {
                 {activeTab === "dashboard" && (
                   <div className="space-y-6 animate-fade-in-scale">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-2xl font-semibold text-white font-display">System Overview</h3>
+                      <h3 className="text-2xl font-semibold text-black font-display">System Overview</h3>
                       <div className="flex space-x-3">
-                        <Button variant="glass" size="sm">
+                        <Button variant="gradient" size="sm">
                           <Play className="w-4 h-4 mr-2" />
                           Run Analysis
                         </Button>
@@ -100,41 +100,41 @@ const MockInterface = () => {
 
                     {/* Metrics grid */}
                     <div className="grid grid-cols-3 gap-6">
-                      <div className="bg-white/5 rounded-xl p-6">
-                        <div className="text-3xl font-bold text-white font-display mb-2">97.3%</div>
-                        <div className="text-white/60 text-sm">Uptime</div>
-                        <div className="mt-3 h-2 bg-white/10 rounded-full overflow-hidden">
+                      <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                        <div className="text-3xl font-bold text-black font-display mb-2">97.3%</div>
+                        <div className="text-gray-600 text-sm">Uptime</div>
+                        <div className="mt-3 h-2 bg-gray-200 rounded-full overflow-hidden">
                           <div className="h-full w-[97%] bg-gradient-to-r from-green-500 to-cyan-500 rounded-full"></div>
                         </div>
                       </div>
-                      <div className="bg-white/5 rounded-xl p-6">
-                        <div className="text-3xl font-bold text-white font-display mb-2">2.4K</div>
-                        <div className="text-white/60 text-sm">Tasks/Hour</div>
-                        <div className="mt-3 h-2 bg-white/10 rounded-full overflow-hidden">
+                      <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                        <div className="text-3xl font-bold text-black font-display mb-2">2.4K</div>
+                        <div className="text-gray-600 text-sm">Tasks/Hour</div>
+                        <div className="mt-3 h-2 bg-gray-200 rounded-full overflow-hidden">
                           <div className="h-full w-[84%] bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
                         </div>
                       </div>
-                      <div className="bg-white/5 rounded-xl p-6">
-                        <div className="text-3xl font-bold text-white font-display mb-2">$127K</div>
-                        <div className="text-white/60 text-sm">Saved/Month</div>
-                        <div className="mt-3 h-2 bg-white/10 rounded-full overflow-hidden">
+                      <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                        <div className="text-3xl font-bold text-black font-display mb-2">$127K</div>
+                        <div className="text-gray-600 text-sm">Saved/Month</div>
+                        <div className="mt-3 h-2 bg-gray-200 rounded-full overflow-hidden">
                           <div className="h-full w-[91%] bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"></div>
                         </div>
                       </div>
                     </div>
 
                     {/* Performance chart */}
-                    <div className="bg-white/5 rounded-xl p-6">
+                    <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
                       <div className="flex justify-between items-center mb-6">
-                        <h4 className="text-lg font-semibold text-white">Performance Timeline</h4>
+                        <h4 className="text-lg font-semibold text-black">Performance Timeline</h4>
                         <div className="flex items-center space-x-4 text-sm">
                           <div className="flex items-center space-x-2">
                             <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                            <span className="text-white/60">Agent Tasks</span>
+                            <span className="text-gray-600">Agent Tasks</span>
                           </div>
                           <div className="flex items-center space-x-2">
                             <div className="w-3 h-3 bg-cyan-500 rounded-full"></div>
-                            <span className="text-white/60">System Load</span>
+                            <span className="text-gray-600">System Load</span>
                           </div>
                         </div>
                       </div>
@@ -147,24 +147,24 @@ const MockInterface = () => {
 
                 {activeTab === "agents" && (
                   <div className="space-y-6 animate-fade-in-scale">
-                    <h3 className="text-2xl font-semibold text-white font-display">Active Agents</h3>
+                    <h3 className="text-2xl font-semibold text-black font-display">Active Agents</h3>
                     <div className="grid gap-4">
                       {["Agent.RAVEN", "Agent.PHANTOM", "Agent.SYNAPSE"].map((agent, index) => (
-                        <div key={agent} className="bg-white/5 rounded-xl p-6 flex items-center justify-between">
+                        <div key={agent} className="bg-gray-50 rounded-xl p-6 flex items-center justify-between border border-gray-200">
                           <div className="flex items-center space-x-4">
-                            <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center">
+                            <div className="w-12 h-12 bg-gradient-nexorus rounded-full flex items-center justify-center">
                               <Activity className="w-6 h-6 text-white" />
                             </div>
                             <div>
-                              <div className="text-white font-semibold">{agent}</div>
-                              <div className="text-white/60 text-sm">Running for {index + 1}h 23m</div>
+                              <div className="text-black font-semibold">{agent}</div>
+                              <div className="text-gray-600 text-sm">Running for {index + 1}h 23m</div>
                             </div>
                           </div>
                           <div className="flex items-center space-x-4">
-                            <div className="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">
+                            <div className="px-3 py-1 bg-green-500/20 text-green-600 rounded-full text-sm">
                               Active
                             </div>
-                            <Button variant="glass" size="sm">
+                            <Button variant="apple-white" size="sm">
                               <Pause className="w-4 h-4" />
                             </Button>
                           </div>
@@ -176,9 +176,9 @@ const MockInterface = () => {
 
                 {activeTab === "users" && (
                   <div className="space-y-6 animate-fade-in-scale">
-                    <h3 className="text-2xl font-semibold text-white font-display">User Activity</h3>
-                    <div className="bg-white/5 rounded-xl p-6">
-                      <div className="text-center text-white/60">
+                    <h3 className="text-2xl font-semibold text-black font-display">User Activity</h3>
+                    <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                      <div className="text-center text-gray-600">
                         <Users className="w-16 h-16 mx-auto mb-4 opacity-50" />
                         <p>User management panel would be displayed here</p>
                       </div>

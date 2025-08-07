@@ -9,7 +9,7 @@ import Contact from "@/components/Contact";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-nexorus">
+    <div className="min-h-screen bg-white">
       <Navigation />
       
       <main>
@@ -37,15 +37,15 @@ const Index = () => {
       </main>
       
       {/* Footer */}
-      <footer className="py-12 bg-black/60 backdrop-blur-sm border-t border-white/10">
+      <footer className="py-12 bg-gray-100 border-t border-gray-200">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg"></div>
-              <span className="text-white font-semibold font-display">NEXORUS</span>
+              <div className="w-8 h-8 bg-gradient-nexorus rounded-lg"></div>
+              <span className="text-black font-semibold font-display">NEXORUS</span>
             </div>
             
-            <div className="text-white/60 text-sm text-center md:text-right">
+            <div className="text-gray-600 text-sm text-center md:text-right">
               <p>© 2024 NEXORUS. We deploy cognition.</p>
               <p className="mt-1">Built for velocity, designed for scale.</p>
             </div>

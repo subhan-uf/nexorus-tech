@@ -9,16 +9,18 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-gradient-nexorus text-white font-semibold shadow-2xl hover:shadow-[0_0_40px_rgba(255,95,162,0.4)] hover:scale-105 transition-all duration-300 border-0 relative overflow-hidden",
-        glass: "glass border border-white/20 text-white backdrop-blur-xl hover:bg-white/10 hover:border-white/30 hover:shadow-lg transition-all duration-300",
-        glow: "bg-primary text-primary-foreground hover-glow-primary relative overflow-hidden",
-        gradient: "bg-gradient-secondary text-white hover:shadow-[0_0_40px_rgba(106,117,255,0.4)] hover:scale-105 transition-all duration-300",
+        apple: "bg-black text-white hover:bg-black/80 shadow-lg hover:shadow-xl transition-all duration-300",
+        "apple-white": "bg-white text-black border border-black/10 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all duration-300",
+        gradient: "bg-gradient-nexorus text-white shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 glow-gradient",
+        "gradient-outline": "border-2 border-transparent bg-gradient-nexorus bg-clip-border text-transparent bg-clip-text hover:bg-white hover:text-black transition-all duration-300",
+        hero: "bg-gradient-nexorus text-white shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 glow-gradient",
+        glass: "apple-blur border border-black/10 hover:bg-white/90 transition-all duration-300",
       },
       size: {
         default: "h-12 px-6 py-3",

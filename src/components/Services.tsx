@@ -58,16 +58,16 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-32 relative">
+    <section className="py-32 bg-white relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-6xl font-bold text-white font-display mb-6">
+          <h2 className="text-apple-title text-black font-display mb-6">
             Deploy
-            <span className="block text-gradient-primary bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="block text-gradient-primary">
               Cognition
             </span>
           </h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Four core systems that transform how startups build, scale, and compete
           </p>
         </div>
@@ -92,13 +92,13 @@ const Services = () => {
                         <Icon className="w-8 h-8 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-4xl font-bold text-white font-display">
+                        <h3 className="text-4xl font-bold text-black font-display">
                           {service.title}
                         </h3>
                       </div>
                     </div>
                     
-                    <p className="text-xl text-white/70 leading-relaxed mb-8">
+                    <p className="text-xl text-gray-600 leading-relaxed mb-8">
                       {service.description}
                     </p>
 
@@ -107,7 +107,7 @@ const Services = () => {
                       {service.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-center space-x-3">
                           <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.gradient}`}></div>
-                          <span className="text-white/80">{feature}</span>
+                          <span className="text-gray-700">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -117,7 +117,7 @@ const Services = () => {
                       {service.tech.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-4 py-2 bg-white/10 text-white/80 rounded-full text-sm border border-white/20"
+                          className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200"
                         >
                           {tech}
                         </span>
@@ -132,7 +132,7 @@ const Services = () => {
 
                 {/* Visual representation */}
                 <div className={`${isEven ? "" : "lg:col-start-1"}`}>
-                  <div className="glass rounded-3xl p-8 hover-glow-primary">
+                  <div className="apple-card-lg p-8 hover-lift">
                     <div className="space-y-6">
                       {/* Header */}
                       <div className="flex items-center justify-between">
@@ -140,9 +140,9 @@ const Services = () => {
                           <div className={`w-8 h-8 rounded-lg bg-gradient-to-r ${service.gradient} flex items-center justify-center`}>
                             <Icon className="w-4 h-4 text-white" />
                           </div>
-                          <span className="text-white font-semibold">{service.title}</span>
+                          <span className="text-black font-semibold">{service.title}</span>
                         </div>
-                        <div className="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">
+                        <div className="px-3 py-1 bg-green-500/20 text-green-600 rounded-full text-sm">
                           Active
                         </div>
                       </div>
@@ -150,23 +150,23 @@ const Services = () => {
                       {/* Mock interface based on service type */}
                       {index === 0 && (
                         <div className="space-y-4">
-                          <div className="bg-white/5 rounded-xl p-4">
+                          <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                             <div className="flex items-center justify-between mb-3">
-                              <span className="text-white/80 text-sm">Agent Processing</span>
-                              <span className="text-cyan-400 text-sm">2.3K tokens/sec</span>
+                              <span className="text-gray-600 text-sm">Agent Processing</span>
+                              <span className="text-cyan-600 text-sm">2.3K tokens/sec</span>
                             </div>
-                            <div className="h-3 bg-white/10 rounded-full overflow-hidden">
+                            <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
                               <div className={`h-full w-3/4 bg-gradient-to-r ${service.gradient} rounded-full animate-pulse`}></div>
                             </div>
                           </div>
                           <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-white/5 rounded-xl p-4 text-center">
-                              <div className="text-2xl font-bold text-white">847</div>
-                              <div className="text-white/60 text-sm">Queries Processed</div>
+                            <div className="bg-gray-50 rounded-xl p-4 text-center border border-gray-200">
+                              <div className="text-2xl font-bold text-black">847</div>
+                              <div className="text-gray-600 text-sm">Queries Processed</div>
                             </div>
-                            <div className="bg-white/5 rounded-xl p-4 text-center">
-                              <div className="text-2xl font-bold text-white">97.2%</div>
-                              <div className="text-white/60 text-sm">Accuracy Rate</div>
+                            <div className="bg-gray-50 rounded-xl p-4 text-center border border-gray-200">
+                              <div className="text-2xl font-bold text-black">97.2%</div>
+                              <div className="text-gray-600 text-sm">Accuracy Rate</div>
                             </div>
                           </div>
                         </div>
@@ -175,25 +175,25 @@ const Services = () => {
                       {index === 1 && (
                         <div className="space-y-4">
                           <div className="flex justify-between items-center">
-                            <span className="text-white/80">Deployment Status</span>
-                            <span className="text-green-400">Live in Production</span>
+                            <span className="text-gray-600">Deployment Status</span>
+                            <span className="text-green-600">Live in Production</span>
                           </div>
                           <div className="space-y-2">
                             <div className="flex justify-between">
-                              <span className="text-white/60 text-sm">Frontend</span>
-                              <span className="text-green-400 text-sm">✓ Deployed</span>
+                              <span className="text-gray-600 text-sm">Frontend</span>
+                              <span className="text-green-600 text-sm">✓ Deployed</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-white/60 text-sm">API</span>
-                              <span className="text-green-400 text-sm">✓ Deployed</span>
+                              <span className="text-gray-600 text-sm">API</span>
+                              <span className="text-green-600 text-sm">✓ Deployed</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-white/60 text-sm">Database</span>
-                              <span className="text-green-400 text-sm">✓ Connected</span>
+                              <span className="text-gray-600 text-sm">Database</span>
+                              <span className="text-green-600 text-sm">✓ Connected</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-white/60 text-sm">Payments</span>
-                              <span className="text-green-400 text-sm">✓ Active</span>
+                              <span className="text-gray-600 text-sm">Payments</span>
+                              <span className="text-green-600 text-sm">✓ Active</span>
                             </div>
                           </div>
                         </div>
@@ -201,16 +201,16 @@ const Services = () => {
 
                       {index === 2 && (
                         <div className="space-y-4">
-                          <div className="bg-white/5 rounded-xl p-4">
+                          <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                             <div className="flex justify-between mb-2">
-                              <span className="text-white/80 text-sm">Scraping Rate</span>
-                              <span className="text-yellow-400 text-sm">15.2K pages/hr</span>
+                              <span className="text-gray-600 text-sm">Scraping Rate</span>
+                              <span className="text-yellow-600 text-sm">15.2K pages/hr</span>
                             </div>
                             <div className="h-8 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg relative overflow-hidden">
                               <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 animate-pulse opacity-60"></div>
                             </div>
                           </div>
-                          <div className="text-white/60 text-sm">
+                          <div className="text-gray-600 text-sm">
                             Last scraped: 2.3 seconds ago
                           </div>
                         </div>
@@ -219,17 +219,17 @@ const Services = () => {
                       {index === 3 && (
                         <div className="space-y-4">
                           <div className="grid grid-cols-3 gap-3">
-                            <div className="bg-white/5 rounded-lg p-3 text-center">
-                              <div className="text-lg font-bold text-white">127</div>
-                              <div className="text-white/60 text-xs">Active Flows</div>
+                            <div className="bg-gray-50 rounded-lg p-3 text-center border border-gray-200">
+                              <div className="text-lg font-bold text-black">127</div>
+                              <div className="text-gray-600 text-xs">Active Flows</div>
                             </div>
-                            <div className="bg-white/5 rounded-lg p-3 text-center">
-                              <div className="text-lg font-bold text-white">99.8%</div>
-                              <div className="text-white/60 text-xs">Success Rate</div>
+                            <div className="bg-gray-50 rounded-lg p-3 text-center border border-gray-200">
+                              <div className="text-lg font-bold text-black">99.8%</div>
+                              <div className="text-gray-600 text-xs">Success Rate</div>
                             </div>
-                            <div className="bg-white/5 rounded-lg p-3 text-center">
-                              <div className="text-lg font-bold text-white">2.1s</div>
-                              <div className="text-white/60 text-xs">Avg Response</div>
+                            <div className="bg-gray-50 rounded-lg p-3 text-center border border-gray-200">
+                              <div className="text-lg font-bold text-black">2.1s</div>
+                              <div className="text-gray-600 text-xs">Avg Response</div>
                             </div>
                           </div>
                         </div>
