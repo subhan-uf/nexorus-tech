@@ -17,9 +17,9 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         apple: "bg-black text-white hover:bg-black/80 shadow-lg hover:shadow-xl transition-all duration-300",
         "apple-white": "bg-white text-black border border-black/10 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all duration-300",
-        gradient: "bg-gradient-nexorus text-white shadow-md hover:shadow-lg hover:scale-[1.002] transition-all duration-700 glow-gradient",
+        gradient: "bg-gradient-nexorus text-white shadow-lg hover:shadow-xl hover:scale-[1.005] transition-all duration-500 glow-gradient",
         "gradient-outline": "border-2 border-transparent bg-gradient-nexorus bg-clip-border text-transparent bg-clip-text hover:bg-white hover:text-black transition-all duration-300",
-        hero: "bg-gradient-nexorus text-white shadow-md hover:shadow-lg hover:scale-[1.002] transition-all duration-700 glow-gradient",
+        hero: "bg-gradient-nexorus text-white shadow-lg hover:shadow-xl hover:scale-[1.005] transition-all duration-500 glow-gradient",
         glass: "apple-blur border border-black/10 hover:bg-white/90 transition-all duration-300",
       },
       size: {

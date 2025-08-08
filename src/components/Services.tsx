@@ -58,7 +58,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-20 bg-white relative">
+    <section className="py-32 bg-white relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-apple-title text-black font-display mb-6">
@@ -156,7 +156,7 @@ const Services = () => {
                               <span className="text-cyan-600 text-sm">2.3K tokens/sec</span>
                             </div>
                             <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
-                              <div className={`h-full w-3/4 bg-gradient-to-r ${service.gradient} rounded-full`}></div>
+                              <div className={`h-full w-3/4 bg-gradient-to-r ${service.gradient} rounded-full animate-pulse`}></div>
                             </div>
                           </div>
                           <div className="grid grid-cols-2 gap-4">
@@ -207,7 +207,7 @@ const Services = () => {
                               <span className="text-yellow-600 text-sm">15.2K pages/hr</span>
                             </div>
                             <div className="h-8 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg relative overflow-hidden">
-                              <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 opacity-60"></div>
+                              <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 animate-pulse opacity-60"></div>
                             </div>
                           </div>
                           <div className="text-gray-600 text-sm">

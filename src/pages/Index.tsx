@@ -6,10 +6,8 @@ import Testimonials from "@/components/Testimonials";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
-import { useGsap } from "@/hooks/useGsap";
 
 const Index = () => {
-  useGsap();
   return (
     <div className="min-h-screen bg-white">
       <Navigation />

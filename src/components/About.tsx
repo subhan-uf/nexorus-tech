@@ -23,7 +23,7 @@ const principles = [
 
 const About = () => {
   return (
-    <section className="py-20 bg-gray-50 relative overflow-hidden">
+    <section className="py-32 bg-gray-50 relative overflow-hidden">
       {/* Subtle background gradient */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-gradient-nexorus rounded-full blur-3xl float-gradient"></div>

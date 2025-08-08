@@ -6,7 +6,7 @@ const MockInterface = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
 
   return (
-    <section className="py-20 bg-white relative">
+    <section className="py-32 bg-white relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-apple-title text-black font-display mb-6">
@@ -35,7 +35,7 @@ const MockInterface = () => {
               </div>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-2 px-3 py-1 bg-green-500/20 rounded-full">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                   <span className="text-green-600 text-sm">All systems operational</span>
                 </div>
                 <Button variant="apple-white" size="sm">
@@ -139,7 +139,7 @@ const MockInterface = () => {
                         </div>
                       </div>
                       <div className="h-32 relative">
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-cyan-500/20 to-purple-500/20 rounded-lg"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-cyan-500/20 to-purple-500/20 rounded-lg animate-pulse"></div>
                       </div>
                     </div>
                   </div>
