@@ -85,7 +85,7 @@ const Hero = () => {
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <Zap className="w-5 h-5 text-cyan-500 animate-pulse" />
+                    <Zap className="w-5 h-5 text-cyan-500" />
                     <span className="text-black font-medium">Agent.RAVEN running...</span>
                   </div>
                   <div className="px-3 py-1 bg-green-500/20 text-green-600 rounded-full text-sm">Active</div>
@@ -98,7 +98,7 @@ const Hero = () => {
                     <span className="text-cyan-600 text-sm">+97% efficiency</span>
                   </div>
                   <div className="h-20 bg-gray-200 rounded-lg relative overflow-hidden">
-                    <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-nexorus rounded-lg animate-pulse"></div>
+                    <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-nexorus rounded-lg"></div>
                   </div>
                 </div>
 

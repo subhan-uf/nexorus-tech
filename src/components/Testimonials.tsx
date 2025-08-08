@@ -51,7 +51,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-32 bg-gray-50 relative overflow-hidden">
+    <section className="py-20 bg-gray-50 relative overflow-hidden">
       {/* Subtle background gradient */}
       <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-gradient-nexorus opacity-5 rounded-full blur-3xl float-gradient"></div>
 

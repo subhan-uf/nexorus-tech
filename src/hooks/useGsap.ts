@@ -46,35 +46,23 @@ export function useGsap() {
       });
     });
 
-    // Storytelling timeline for Services
+    // Storytelling timeline for Services (subtle stagger)
     const services = document.querySelector("#services");
     if (services) {
       const items = services.querySelectorAll(".apple-card, .apple-card-lg");
       gsap.from(items, {
         opacity: 0,
-        y: 28,
-        duration: 0.8,
+        y: 16,
+        duration: 0.6,
         ease: "power2.out",
-        stagger: 0.15,
+        stagger: 0.1,
         scrollTrigger: {
           trigger: services,
-          start: "top 75%",
-          end: "bottom 60%",
-          scrub: 0.4,
+          start: "top 80%",
+          end: "bottom 70%",
+          scrub: 0.2,
         },
       });
-
-      // Pin the headline area lightly for a narrative feel
-      const headline = services.querySelector("h2");
-      if (headline) {
-        ScrollTrigger.create({
-          trigger: services,
-          start: "top center",
-          end: "+=60%",
-          pin: headline,
-          pinSpacing: false,
-        });
-      }
     }
 
     // Clean-up on unmount

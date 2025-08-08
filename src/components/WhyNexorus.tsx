@@ -30,7 +30,7 @@ const features = [
 
 const WhyNexorus = () => {
   return (
-    <section className="py-32 bg-gray-50 relative">
+    <section className="py-20 bg-gray-50 relative">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Story */}
@@ -52,15 +52,15 @@ const WhyNexorus = () => {
 
             <div className="space-y-6">
               <div className="flex items-center space-x-4 text-gray-700">
-                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
                 <span>Agent-first architecture</span>
               </div>
               <div className="flex items-center space-x-4 text-gray-700">
-                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                 <span>24-hour launch windows</span>
               </div>
               <div className="flex items-center space-x-4 text-gray-700">
-                <div className="w-2 h-2 bg-pink-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
                 <span>Built for velocity, not vanity</span>
               </div>
             </div>
