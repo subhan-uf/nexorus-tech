@@ -92,7 +92,7 @@
   .bg-gradient-nexorus {
     background: var(--gradient-primary);
     background-size: 400% 400%;
-    animation: gradient-shift 10s ease infinite;
+    animation: gradient-shift 24s ease infinite;
   }
   
   .bg-gradient-secondary {
@@ -109,6 +109,16 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  
+  /* Animated slow gradient text for brand name */
+  .text-gradient-slow {
+    background: var(--gradient-text);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-text 20s ease infinite;
   }
   
   /* Apple-style blur effects */
@@ -135,7 +145,7 @@
   
   /* Floating animation for gradients only */
   .float-gradient {
-    animation: float 6s ease-in-out infinite;
+    animation: float 16s ease-in-out infinite;
   }
   
   /* Minimal animations */

@@ -12,6 +12,9 @@ const Hero = () => {
           {/* Left side - Content */}
           <div className="space-apple-lg fade-in-apple">
             <div className="space-apple-md">
+              <p className="text-sm text-muted-foreground tracking-wide">
+                We are <span className="text-gradient-slow font-semibold">Nexorus</span>
+              </p>
               <h1 className="text-apple-hero text-black font-display">
                 Automate
                 <span className="block text-gradient-primary">
