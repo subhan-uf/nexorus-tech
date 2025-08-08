@@ -92,7 +92,7 @@
   .bg-gradient-nexorus {
     background: var(--gradient-primary);
     background-size: 400% 400%;
-    animation: gradient-shift 48s ease infinite;
+    animation: gradient-shift 120s ease infinite;
   }
   
   .bg-gradient-secondary {
@@ -118,7 +118,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: gradient-text 40s ease infinite;
+    animation: gradient-text 90s ease infinite;
   }
   
   /* Apple-style blur effects */
@@ -145,7 +145,7 @@
   
   /* Floating animation for gradients only */
   .float-gradient {
-    animation: float 24s ease-in-out infinite;
+    animation: float 40s ease-in-out infinite;
   }
   
   /* Minimal animations */
