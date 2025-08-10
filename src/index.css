@@ -55,6 +55,39 @@
     --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
+
+  .dark {
+    /* Apple-style dark theme */
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
+    
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
+    
+    --primary: 265 85% 70%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 0 0% 9%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --accent: 0 0% 9%;
+    --accent-foreground: 0 0% 98%;
+    
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 64%;
+    
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 265 85% 70%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Dark mode shadows */
+    --apple-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --apple-shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    --apple-blur: blur(20px) saturate(180%);
+  }
 }
 
 @layer base {
@@ -87,12 +120,22 @@
     box-shadow: var(--apple-shadow-lg);
     border: 1px solid hsl(var(--border));
   }
+
+  .dark .apple-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .apple-card-lg {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
   
-  /* Gradient elements for selective use */
+  /* Gradient elements for selective use - SLOWED DOWN */
   .bg-gradient-nexorus {
     background: var(--gradient-primary);
     background-size: 400% 400%;
-    animation: gradient-shift 48s ease infinite;
+    animation: gradient-shift 3s ease infinite; /* Much slower - 5 minutes */
   }
   
   .bg-gradient-secondary {
@@ -111,14 +154,25 @@
     background-clip: text;
   }
   
-  /* Animated slow gradient text for brand name */
+  /* Animated slow gradient text for brand name - FLOWING GRADIENT */
   .text-gradient-slow {
-    background: var(--gradient-text);
-    background-size: 200% 200%;
+    background: var(--gradient-primary);
+    background-size: 400% 400%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: gradient-text 40s ease infinite;
+    animation: gradient-shift 3s ease infinite; /* Much slower - 5 minutes */
+  }
+
+  /* Gradient text for bold elements - FLOWING GRADIENT */
+  .text-gradient-bold {
+    background: var(--gradient-primary);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite; /* Much slower - 5 minutes */
+    font-weight: 700;
   }
   
   /* Apple-style blur effects */
@@ -126,6 +180,11 @@
     backdrop-filter: var(--apple-blur);
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .apple-blur {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   /* Selective glow effects */
@@ -143,14 +202,23 @@
     box-shadow: var(--apple-shadow-lg);
   }
   
-  /* Floating animation for gradients only */
+  /* Floating animation for gradients only - MUCH SLOWER */
   .float-gradient {
-    animation: float 24s ease-in-out infinite;
+    animation: float 120s ease-in-out infinite; /* Much slower - 2 minutes */
   }
   
   /* Minimal animations */
   .fade-in-apple {
     animation: fade-in-up 0.8s ease-out;
+  }
+
+  /* Subtle background gradient orbs */
+  .bg-gradient-orb {
+    background: var(--gradient-primary);
+    background-size: 400% 400%;
+    animation: gradient-shift 3s ease infinite;
+    opacity: 0.03;
+    filter: blur(80px);
   }
 }
 
@@ -174,7 +242,7 @@
   }
 }
 
-/* Keyframe animations */
+/* Keyframe animations - MUCH SLOWER */
 @keyframes gradient-shift {
   0%, 100% {
     background-position: 0% 50%;
