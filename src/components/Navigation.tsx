@@ -27,7 +27,7 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full overflow-hidden ${
       isScrolled 
-        ? "glassmorphism-ultra border-b border-white/20 dark:border-white/10" 
+        ? "glassmorphism-ultra" 
         : "glassmorphism"
     }`}>
       <div className="w-full px-3 sm:px-6 max-w-7xl mx-auto">
@@ -69,7 +69,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden w-8 h-8 sm:w-10 sm:h-10 glassmorphism rounded-xl flex items-center justify-center border border-white/20 dark:border-white/10 flex-shrink-0"
+            className="lg:hidden w-8 h-8 sm:w-10 sm:h-10 glassmorphism rounded-xl flex items-center justify-center flex-shrink-0"
           >
             {isMobileMenuOpen ? (
               <X className="w-4 h-4 sm:w-5 sm:h-5 text-black dark:text-white" />
@@ -82,7 +82,7 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden glassmorphism-ultra border-t border-white/20 dark:border-white/10 animate-fade-in-up">
+        <div className="lg:hidden glassmorphism-ultra animate-fade-in-up">
           <div className="w-full px-3 sm:px-6 py-6 max-w-7xl mx-auto">
             <div className="space-y-4">
               {navItems.map((item) => (

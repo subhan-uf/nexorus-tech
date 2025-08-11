@@ -191,14 +191,12 @@
   .glassmorphism {
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(25px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   }
 
   .dark .glassmorphism {
     background: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(25px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   }
 
@@ -206,7 +204,6 @@
   .glassmorphism-ultra {
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(35px) saturate(300%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 
       0 8px 32px 0 rgba(31, 38, 135, 0.37),
       inset 0 1px 0 rgba(255, 255, 255, 0.15),
@@ -216,7 +213,6 @@
   .dark .glassmorphism-ultra {
     background: rgba(0, 0, 0, 0.12);
     backdrop-filter: blur(35px) saturate(300%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 
       0 8px 32px 0 rgba(0, 0, 0, 0.37),
       inset 0 1px 0 rgba(255, 255, 255, 0.08),
