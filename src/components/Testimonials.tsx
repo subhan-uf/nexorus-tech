@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const testimonials = [
@@ -32,8 +32,23 @@ const testimonials = [
   }
 ];
 
+// Expanded list of technologies and companies NEXORUS works with
+const technologies = [
+  "YC", "Stripe", "OpenAI", "Vercel", "AWS", "Google Cloud", "Azure", "Supabase",
+  "Next.js", "React", "Node.js", "Python", "Django", "FastAPI", "LangChain",
+  "PostgreSQL", "MongoDB", "Redis", "Docker", "Kubernetes", "Terraform",
+  "GitHub", "GitLab", "Jira", "Slack", "Zapier", "n8n", "Playwright",
+  "TypeScript", "JavaScript", "Tailwind CSS", "GraphQL", "REST APIs",
+  "Machine Learning", "Computer Vision", "Neural Networks", "Vector DB"
+];
+
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMarqueeHovered, setIsMarqueeHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const marqueeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -50,8 +65,30 @@ const Testimonials = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
+  // Drag functionality
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setDragStartX(e.clientX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    // Simplified drag - just pause animation for now
+    if (isDragging) {
+      // Animation is paused via CSS class
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsMarqueeHovered(false);
+    setIsDragging(false);
+  };
+
   return (
-    <section className="py-32 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+    <section className="py-32 bg-gray-50 dark:bg-gray-900 relative">
       {/* Subtle background gradient orbs */}
       <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-gradient-orb rounded-full"></div>
       <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-gradient-orb rounded-full" style={{ animationDelay: '60s' }}></div>
@@ -73,19 +110,21 @@ const Testimonials = () => {
         {/* Testimonial carousel */}
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            <div className="apple-card-lg p-12 text-center">
+            <div className="apple-card-lg p-12 text-center h-[500px] sm:h-[400px] flex flex-col justify-center">
               <div className="flex justify-center mb-6">
                 {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
                   <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
                 ))}
               </div>
               
-              <blockquote 
-                className="text-3xl font-light text-black dark:text-white leading-relaxed mb-12 font-display"
-                dangerouslySetInnerHTML={{ __html: `"${testimonials[currentIndex].quote}"` }}
-              />
+              <div className="flex-1 flex items-center justify-center px-4">
+                <blockquote 
+                  className="text-lg sm:text-2xl lg:text-3xl font-light text-black dark:text-white leading-relaxed font-display max-w-3xl"
+                  dangerouslySetInnerHTML={{ __html: `"${testimonials[currentIndex].quote}"` }}
+                />
+              </div>
               
-              <div className="flex items-center justify-center space-x-4">
+              <div className="flex items-center justify-center space-x-4 mt-6">
                 <div className="w-16 h-16 bg-gradient-nexorus rounded-full flex items-center justify-center">
                   <span className="text-white font-semibold text-lg">
                     {testimonials[currentIndex].author.split(' ').map(n => n[0]).join('')}
@@ -131,15 +170,66 @@ const Testimonials = () => {
           </div>
         </div>
 
-        {/* Client logos placeholder */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 opacity-40">
-          {["YC", "Stripe", "OpenAI", "Vercel"].map((company) => (
-            <div key={company} className="text-center">
-              <div className="w-16 h-16 mx-auto bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                <span className="text-gray-600 dark:text-gray-300 font-semibold">{company}</span>
+        {/* Technologies Marquee */}
+        <div className="mt-20">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-semibold text-black dark:text-white font-display mb-2">
+              Technologies We Work With
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              From cloud platforms to cutting-edge AI frameworks
+            </p>
+          </div>
+          
+          <div 
+            className="relative cursor-grab active:cursor-grabbing overflow-hidden"
+            onMouseEnter={() => setIsMarqueeHovered(true)}
+            onMouseLeave={handleMouseLeave}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+          >
+            {/* Left blur gradient */}
+            <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-gray-50 dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
+            
+            {/* Right blur gradient */}
+            <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-gray-50 dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
+            
+            {/* Marquee container with padding for shadows */}
+            <div className="py-4">
+              <div 
+                ref={marqueeRef}
+                className={`flex space-x-8 animate-marquee ${
+                  isMarqueeHovered || isDragging ? 'paused' : ''
+                }`}
+                style={{ width: 'max-content' }}
+              >
+                {/* First set of items */}
+                {technologies.map((tech, index) => (
+                  <div 
+                    key={`first-${index}`}
+                    className="flex-shrink-0 px-6 py-4 rounded-xl border bg-gradient-to-r from-purple-500/10 to-pink-500/10 border-purple-200 dark:border-purple-700 shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <span className="font-semibold text-sm text-gradient-primary">
+                      {tech}
+                    </span>
+                  </div>
+                ))}
+                
+                {/* Duplicate set for seamless loop */}
+                {technologies.map((tech, index) => (
+                  <div 
+                    key={`second-${index}`}
+                    className="flex-shrink-0 px-6 py-4 rounded-xl border bg-gradient-to-r from-purple-500/10 to-pink-500/10 border-purple-200 dark:border-purple-700 shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <span className="font-semibold text-sm text-gradient-primary">
+                      {tech}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

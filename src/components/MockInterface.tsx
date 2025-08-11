@@ -29,19 +29,19 @@ const MockInterface = () => {
         <div className="max-w-7xl mx-auto">
           <div className="apple-card-lg p-8 hover-lift">
             {/* Top bar */}
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 space-y-4 sm:space-y-0">
               <div className="flex items-center space-x-6">
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-gradient-nexorus rounded-lg"></div>
                   <span className="text-black dark:text-white font-semibold text-xl">NEXORUS</span>
                 </div>
-                <div className="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
-                <span className="text-gray-500 dark:text-gray-400">Production Environment</span>
+                <div className="hidden sm:block h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
+                <span className="text-gray-500 dark:text-gray-400 text-sm sm:text-base">Production Environment</span>
               </div>
-              <div className="flex items-center space-x-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
                 <div className="flex items-center space-x-2 px-3 py-1 bg-green-500/20 rounded-full">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-green-600 dark:text-green-400 text-sm">All systems operational</span>
+                  <span className="text-green-600 dark:text-green-400 text-xs sm:text-sm">All systems operational</span>
                 </div>
                 <Button variant="apple-white" size="sm">
                   <Settings className="w-4 h-4" />
@@ -104,7 +104,7 @@ const MockInterface = () => {
               <div className="lg:col-span-3">
                 {activeTab === "dashboard" && (
                   <div className="space-y-6 animate-fade-in-scale">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0">
                       <h3 className="text-2xl font-semibold text-black dark:text-white font-display">System Overview</h3>
                       <div className="flex space-x-3">
                         <Button variant="gradient" size="sm" className="group [animation-duration:10s] before:[animation-duration:13s] after:[animation-duration:13s]">
@@ -115,23 +115,23 @@ const MockInterface = () => {
                     </div>
 
                     {/* Metrics grid */}
-                    <div className="grid grid-cols-3 gap-6">
-                      <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                        <div className="text-3xl font-bold text-black dark:text-white font-display mb-2">97.3%</div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                      <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
+                        <div className="text-2xl sm:text-3xl font-bold text-black dark:text-white font-display mb-2">97.3%</div>
                         <div className="text-gray-600 dark:text-gray-300 text-sm">Uptime</div>
                         <div className="mt-3 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                           <div className="h-full w-[97%] bg-gradient-to-r from-green-500 to-cyan-500 rounded-full"></div>
                         </div>
                       </div>
-                      <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                        <div className="text-3xl font-bold text-black dark:text-white font-display mb-2">2.4K</div>
+                      <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
+                        <div className="text-2xl sm:text-3xl font-bold text-black dark:text-white font-display mb-2">2.4K</div>
                         <div className="text-gray-600 dark:text-gray-300 text-sm">Tasks/Hour</div>
                         <div className="mt-3 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                           <div className="h-full w-[84%] bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
                         </div>
                       </div>
-                      <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                        <div className="text-3xl font-bold text-black dark:text-white font-display mb-2">$127K</div>
+                      <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700 sm:col-span-2 lg:col-span-1">
+                        <div className="text-2xl sm:text-3xl font-bold text-black dark:text-white font-display mb-2">$127K</div>
                         <div className="text-gray-600 dark:text-gray-300 text-sm">Saved/Month</div>
                         <div className="mt-3 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                           <div className="h-full w-[91%] bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"></div>
@@ -140,10 +140,10 @@ const MockInterface = () => {
                     </div>
 
                     {/* Performance chart */}
-                    <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                      <div className="flex justify-between items-center mb-6">
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
                         <h4 className="text-lg font-semibold text-black dark:text-white">Performance Timeline</h4>
-                        <div className="flex items-center space-x-4 text-sm">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 text-sm">
                           <div className="flex items-center space-x-2">
                             <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
                             <span className="text-gray-600 dark:text-gray-300">Agent Tasks</span>
@@ -170,7 +170,7 @@ const MockInterface = () => {
                         { name: "Agent.PHANTOM", status: "Active", type: "Data Scraping", uptime: "2h 45m" },
                         { name: "Agent.SYNAPSE", status: "Active", type: "Workflow Automation", uptime: "45m" }
                       ].map((agent, index) => (
-                        <div key={agent.name} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 flex items-center justify-between border border-gray-200 dark:border-gray-700">
+                        <div key={agent.name} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 border border-gray-200 dark:border-gray-700">
                           <div className="flex items-center space-x-4">
                             <div className="w-12 h-12 bg-gradient-nexorus rounded-full flex items-center justify-center">
                               <Brain className="w-6 h-6 text-white" />
@@ -203,7 +203,7 @@ const MockInterface = () => {
                         { name: "Invoice Processing", status: "Running", efficiency: "89%", tasks: "89/hr" },
                         { name: "Content Generation", status: "Idle", efficiency: "0%", tasks: "0/hr" }
                       ].map((workflow, index) => (
-                        <div key={workflow.name} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 flex items-center justify-between border border-gray-200 dark:border-gray-700">
+                        <div key={workflow.name} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 border border-gray-200 dark:border-gray-700">
                           <div className="flex items-center space-x-4">
                             <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
                               <Zap className="w-6 h-6 text-white" />
@@ -234,8 +234,8 @@ const MockInterface = () => {
                 {activeTab === "data" && (
                   <div className="space-y-6 animate-fade-in-scale">
                     <h3 className="text-2xl font-semibold text-black dark:text-white font-display">Data Pipeline</h3>
-                    <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                      <div className="grid grid-cols-2 gap-6">
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                           <h4 className="text-lg font-semibold text-black dark:text-white mb-4">Active Crawlers</h4>
                           <div className="space-y-3">
