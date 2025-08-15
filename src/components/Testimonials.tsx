@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import Reveal from "@/components/motion/Reveal";
 
 const testimonials = [
   {
@@ -95,21 +96,24 @@ const Testimonials = () => {
       <div className="absolute top-3/4 left-1/3 w-64 h-64 bg-gradient-orb rounded-full" style={{ animationDelay: '120s' }}></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-apple-title text-black dark:text-white font-display mb-6">
-            Trusted by
-            <span className="block text-gradient-primary">
-              Industry Leaders
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
-            From YC startups to enterprise giants
-          </p>
-        </div>
+        <Reveal>
+          <div className="text-center mb-16">
+            <h2 className="text-apple-title text-black dark:text-white font-display mb-6">
+              Trusted by
+              <span className="block text-gradient-primary">
+                Industry Leaders
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              From YC startups to enterprise giants
+            </p>
+          </div>
+        </Reveal>
 
         {/* Testimonial carousel */}
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
+        <Reveal delay={0.1}>
+          <div className="max-w-4xl mx-auto">
+            <div className="relative">
             <div className="apple-card-lg p-12 text-center h-[500px] sm:h-[400px] flex flex-col justify-center">
               <div className="flex justify-center mb-6">
                 {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
@@ -169,10 +173,11 @@ const Testimonials = () => {
             ))}
           </div>
         </div>
-
+        </Reveal>
         {/* Technologies Marquee */}
-        <div className="mt-20">
-          <div className="text-center mb-8">
+        <Reveal delay={0.2}>
+          <div className="mt-20">
+            <div className="text-center mb-8">
             <h3 className="text-2xl font-semibold text-black dark:text-white font-display mb-2">
               Technologies We Work With
             </h3>
@@ -231,6 +236,8 @@ const Testimonials = () => {
             </div>
           </div>
         </div>
+      
+        </Reveal>
       </div>
     </section>
   );

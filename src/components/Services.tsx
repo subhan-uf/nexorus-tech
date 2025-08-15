@@ -1,5 +1,6 @@
 import { Brain, Rocket, Ghost, RotateCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Reveal from "@/components/motion/Reveal";
 
 const services = [
   {
@@ -65,30 +66,32 @@ const Services = () => {
       <div className="absolute top-3/4 left-1/3 w-64 h-64 bg-gradient-orb rounded-full" style={{ animationDelay: '120s' }}></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="text-apple-title text-black dark:text-white font-display mb-6">
-            Deploy
-            <span className="block text-gradient-primary">
-              Cognition
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Four core systems that transform how startups build, scale, and compete
-          </p>
-        </div>
+        <Reveal>
+          <div className="text-center mb-20">
+            <h2 className="text-apple-title text-black dark:text-white font-display mb-6">
+              Deploy
+              <span className="block text-gradient-primary">
+                Cognition
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Four core systems that transform how startups build, scale, and compete
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="space-y-32">
+        <Reveal.Stagger className="space-y-32">
           {services.map((service, index) => {
             const Icon = service.icon;
             const isEven = index % 2 === 0;
             
             return (
-              <div
-                key={index}
-                className={`grid lg:grid-cols-2 gap-16 items-center ${
-                  isEven ? "" : "lg:grid-flow-col-dense"
-                }`}
-              >
+              <Reveal key={index}>
+                <div
+                  className={`grid lg:grid-cols-2 gap-16 items-center ${
+                    isEven ? "" : "lg:grid-flow-col-dense"
+                  }`}
+                >
                 {/* Content */}
                 <div className={`space-apple-lg ${isEven ? "" : "lg:col-start-2"}`}>
                   <div className="space-apple-md">
@@ -243,9 +246,10 @@ const Services = () => {
                   </div>
                 </div>
               </div>
+              </Reveal>
             );
           })}
-        </div>
+        </Reveal.Stagger>
       </div>
     </section>
   );

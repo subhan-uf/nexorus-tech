@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, Pause, Settings, Activity, Users, BarChart3, Brain, Zap, Database, Rocket } from "lucide-react";
+import Reveal from "@/components/motion/Reveal";
 
 const MockInterface = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -13,21 +14,24 @@ const MockInterface = () => {
       <div className="absolute top-3/4 left-1/3 w-64 h-64 bg-gradient-orb rounded-full" style={{ animationDelay: '120s' }}></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-apple-title text-black dark:text-white font-display mb-6">
-            Command Your
-            <span className="block text-gradient-primary">
-              Digital Empire
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Every agent, workflow, and system under one unified control plane
-          </p>
-        </div>
+        <Reveal>
+          <div className="text-center mb-16">
+            <h2 className="text-apple-title text-black dark:text-white font-display mb-6">
+              Command Your
+              <span className="block text-gradient-primary">
+                Digital Empire
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Every agent, workflow, and system under one unified control plane
+            </p>
+          </div>
+        </Reveal>
 
         {/* Full-width dashboard mockup */}
-        <div className="max-w-7xl mx-auto">
-          <div className="apple-card-lg p-8 hover-lift">
+        <Reveal delay={0.1}>
+          <div className="max-w-7xl mx-auto">
+            <div className="apple-card-lg p-8 hover-lift">
             {/* Top bar */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 space-y-4 sm:space-y-0">
               <div className="flex items-center space-x-6">
@@ -270,6 +274,7 @@ const MockInterface = () => {
             </div>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );

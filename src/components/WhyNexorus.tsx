@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Zap, Target, Rocket, Bot, Database } from "lucide-react";
+import Reveal from "@/components/motion/Reveal";
 
 const features = [
   {
@@ -61,51 +62,56 @@ const WhyNexorus = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Story */}
           <div className="space-apple-lg">
-            <div className="space-apple-md">
-              <h2 className="text-apple-title text-black dark:text-white font-display leading-tight">
-                Startups don't need
-                <span className="block text-gradient-primary">
-                  code.
-                </span>
-                <span className="block text-black dark:text-white">They need outcomes.</span>
-              </h2>
-              
-              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
-                We don't build software. We deploy cognition. Every system is architected 
-                for velocity, built for scale, and designed to evolve with your vision.
-              </p>
-            </div>
+            <Reveal>
+              <div className="space-apple-md">
+                <h2 className="text-apple-title text-black dark:text-white font-display leading-tight">
+                  Startups don't need
+                  <span className="block text-gradient-primary">
+                    code.
+                  </span>
+                  <span className="block text-black dark:text-white">They need outcomes.</span>
+                </h2>
+                
+                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
+                  We don't build software. We deploy cognition. Every system is architected 
+                  for velocity, built for scale, and designed to evolve with your vision.
+                </p>
+              </div>
+            </Reveal>
 
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-300">
-                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
-                <span>Agent-first architecture</span>
+            <Reveal delay={0.1}>
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-300">
+                  <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
+                  <span>Agent-first architecture</span>
+                </div>
+                <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-300">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <span>24-hour launch windows</span>
+                </div>
+                <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-300">
+                  <div className="w-2 h-2 bg-pink-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                  <span>Built for velocity, not vanity</span>
+                </div>
               </div>
-              <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-300">
-                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <span>24-hour launch windows</span>
-              </div>
-              <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-300">
-                <div className="w-2 h-2 bg-pink-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                <span>Built for velocity, not vanity</span>
-              </div>
-            </div>
+            </Reveal>
 
-            <Button variant="apple" size="lg" className="mt-8">
-              See Our Work
-            </Button>
+            <Reveal delay={0.2}>
+              <Button variant="apple" size="lg" className="mt-8">
+                See Our Work
+              </Button>
+            </Reveal>
           </div>
 
           {/* Right side - Feature cards */}
-          <div className="grid gap-6">
+          <Reveal.Stagger className="grid gap-6">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <div
-                  key={index}
-                  className="apple-card p-6 hover-lift group cursor-pointer"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+                <Reveal key={index}>
+                  <div
+                    className="apple-card p-6 hover-lift group cursor-pointer"
+                  >
                   <div className="flex items-start space-x-4">
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                       <Icon className="w-6 h-6 text-white" />
@@ -120,9 +126,10 @@ const WhyNexorus = () => {
                     </div>
                   </div>
                 </div>
+                </Reveal>
               );
             })}
-          </div>
+          </Reveal.Stagger>
         </div>
       </div>
     </section>

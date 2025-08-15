@@ -1,4 +1,5 @@
 import { Zap, Target, Rocket } from "lucide-react";
+import Reveal from "@/components/motion/Reveal";
 
 const principles = [
   {
@@ -30,30 +31,31 @@ const About = () => {
       <div className="absolute top-2/3 left-1/4 w-64 h-64 bg-gradient-orb rounded-full" style={{ animationDelay: '120s' }}></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-20">
-          <h2 className="text-apple-title text-black dark:text-white font-display mb-8 leading-tight">
-            We build like it's
-            <span className="block text-gradient-primary">
-              our company
-            </span>
-            <span className="block text-black dark:text-white">— because it might be.</span>
-          </h2>
-          
-          <p className="text-2xl text-gray-600 dark:text-gray-300 leading-relaxed">
-            Founded in 2024, NEXORUS emerged from a simple belief: startups don't fail because of bad ideas. 
-            They fail because <span className="text-gradient-bold">building takes too long</span>.
-          </p>
-        </div>
+        <Reveal>
+          <div className="max-w-4xl mx-auto text-center mb-20">
+            <h2 className="text-apple-title text-black dark:text-white font-display mb-8 leading-tight">
+              We build like it's
+              <span className="block text-gradient-primary">
+                our company
+              </span>
+              <span className="block text-black dark:text-white">— because it might be.</span>
+            </h2>
+            
+            <p className="text-2xl text-gray-600 dark:text-gray-300 leading-relaxed">
+              Founded in 2024, NEXORUS emerged from a simple belief: startups don't fail because of bad ideas. 
+              They fail because <span className="text-gradient-bold">building takes too long</span>.
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-20">
+        <Reveal.Stagger className="grid lg:grid-cols-3 gap-8 mb-20">
           {principles.map((principle, index) => {
             const Icon = principle.icon;
             return (
-              <div
-                key={index}
-                className="apple-card p-8 text-center hover-lift group"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
+              <Reveal key={index}>
+                <div
+                  className="apple-card p-8 text-center hover-lift group"
+                >
                 <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${principle.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                   <Icon className="w-10 h-10 text-white" />
                 </div>
@@ -66,12 +68,14 @@ const About = () => {
                    dangerouslySetInnerHTML={{ __html: principle.description }}>
                 </p>
               </div>
+            </Reveal>
             );
           })}
-        </div>
+        </Reveal.Stagger>
 
         {/* Philosophy section */}
-        <div className="apple-card-lg p-12 max-w-6xl mx-auto">
+        <Reveal delay={0.1}>
+          <div className="apple-card-lg p-12 max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-apple-lg">
               <h3 className="text-4xl font-bold text-black dark:text-white font-display mb-6">
@@ -130,6 +134,7 @@ const About = () => {
             </div>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );

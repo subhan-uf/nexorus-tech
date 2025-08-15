@@ -1,5 +1,6 @@
 import { Linkedin, Globe, Code, Brain, Cloud, Zap, Database, Rocket, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Reveal from "@/components/motion/Reveal";
 
 const founders = [
   {
@@ -60,24 +61,27 @@ const Founders = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-apple-title text-black dark:text-white font-display mb-6 leading-tight">
-            Meet the
-            <span className="block text-gradient-primary">
-              Architects
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            The minds behind NEXORUS. Two founders with complementary expertise in software engineering and AI.
-          </p>
-        </div>
+        <Reveal>
+          <div className="text-center mb-20">
+            <h2 className="text-apple-title text-black dark:text-white font-display mb-6 leading-tight">
+              Meet the
+              <span className="block text-gradient-primary">
+                Architects
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              The minds behind NEXORUS. Two founders with complementary expertise in software engineering and AI.
+            </p>
+          </div>
+        </Reveal>
 
         {/* Founders Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
+        <Reveal.Stagger className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
           {founders.map((founder, index) => {
             const Icon = founder.icon;
             return (
-              <div key={founder.name} className="space-y-8">
+              <Reveal key={founder.name}>
+                <div className="space-y-8">
                 {/* Founder Card */}
                 <div className="apple-card-lg p-8 hover-lift group">
                   <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-6 lg:space-y-0 lg:space-x-8">
@@ -167,13 +171,15 @@ const Founders = () => {
                   </div>
                 </div>
               </div>
+            </Reveal>
             );
           })}
-        </div>
+        </Reveal.Stagger>
 
         {/* Vision Statement */}
-        <div className="mt-20">
-          <div className="apple-card-lg p-12 max-w-4xl mx-auto text-center">
+        <Reveal delay={0.1}>
+          <div className="mt-20">
+            <div className="apple-card-lg p-12 max-w-4xl mx-auto text-center">
             <h3 className="text-3xl font-bold text-black dark:text-white font-display mb-6">
               Our Vision
             </h3>
@@ -190,6 +196,7 @@ const Founders = () => {
             </div>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );

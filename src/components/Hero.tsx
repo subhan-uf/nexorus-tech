@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Zap, Brain } from "lucide-react";
+import Reveal from "@/components/motion/Reveal";
 
 const Hero = () => {
   return (
@@ -12,54 +13,61 @@ const Hero = () => {
       <div className="container mx-auto px-6 py-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Content */}
-          <div className="space-apple-lg fade-in-apple">
-            <div className="space-apple-md">
-              <p className="text-lg text-muted-foreground tracking-wide">
-                We are <span className="text-gradient-slow font-semibold text-2xl">Nexorus</span>
-              </p>
-              <h1 className="text-apple-hero text-black dark:text-white font-display">
-                Automate
-                <span className="block text-gradient-primary">
-                  Better.
-                </span>
-                <span className="block text-black dark:text-white">Scale Faster.</span>
-              </h1>
-              
-              <p className="text-apple-subtitle text-gray-600 dark:text-gray-300 max-w-xl leading-relaxed">
-                Launch-ready systems, AI agents, and <span className="text-gradient-bold">SaaS protocols</span> – deployed in days, not months.
-              </p>
-            </div>
+          <div className="space-apple-lg">
+            <Reveal>
+              <div className="space-apple-md">
+                <p className="text-lg text-muted-foreground tracking-wide">
+                  We are <span className="text-gradient-slow font-semibold text-2xl">Nexorus</span>
+                </p>
+                <h1 className="text-apple-hero text-black dark:text-white font-display">
+                  Automate
+                  <span className="block text-gradient-primary">
+                    Better.
+                  </span>
+                  <span className="block text-black dark:text-white">Scale Faster.</span>
+                </h1>
+                
+                <p className="text-apple-subtitle text-gray-600 dark:text-gray-300 max-w-xl leading-relaxed">
+                  Launch-ready systems, AI agents, and <span className="text-gradient-bold">SaaS protocols</span> – deployed in days, not months.
+                </p>
+              </div>
+            </Reveal>
 
-            <div className="flex flex-col sm:flex-row gap-6">
-              <Button variant="gradient" size="xl" className="group [animation-duration:10s] before:[animation-duration:10s] after:[animation-duration:10s]">
-                Deploy a Protocol
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="apple-white" size="xl" className="group">
-                <Play className="mr-2" />
-                Book a Demo
-              </Button>
-            </div>
+            <Reveal delay={0.1}>
+              <div className="flex flex-col sm:flex-row gap-6">
+                <Button variant="gradient" size="xl" className="group [animation-duration:10s] before:[animation-duration:10s] after:[animation-duration:10s]">
+                  Deploy a Protocol
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <Button variant="apple-white" size="xl" className="group">
+                  <Play className="mr-2" />
+                  Book a Demo
+                </Button>
+              </div>
+            </Reveal>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-12 border-t border-gray-200 dark:border-gray-700">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-black dark:text-white font-display">137+</div>
-                <div className="text-gray-500 dark:text-gray-400 text-sm">Clients</div>
+            <Reveal delay={0.2}>
+              <div className="grid grid-cols-3 gap-8 pt-12 border-t border-gray-200 dark:border-gray-700">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-black dark:text-white font-display">137+</div>
+                  <div className="text-gray-500 dark:text-gray-400 text-sm">Clients</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-black dark:text-white font-display">92%</div>
+                  <div className="text-gray-500 dark:text-gray-400 text-sm">Faster Delivery</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-black dark:text-white font-display">$2.1M+</div>
+                  <div className="text-gray-500 dark:text-gray-400 text-sm">SaaS Funded</div>
+                </div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-black dark:text-white font-display">92%</div>
-                <div className="text-gray-500 dark:text-gray-400 text-sm">Faster Delivery</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-black dark:text-white font-display">$2.1M+</div>
-                <div className="text-gray-500 dark:text-gray-400 text-sm">SaaS Funded</div>
-              </div>
-            </div>
+            </Reveal>
           </div>
 
           {/* Right side - Mock UI Dashboard */}
-          <div className="relative fade-in-apple" style={{ animationDelay: '0.3s' }}>
+          <Reveal delay={0.3}>
+            <div className="relative">
             <div className="apple-card-lg p-8 hover-lift">
               {/* Dashboard Header */}
               <div className="flex items-center justify-between mb-8">
@@ -121,6 +129,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
+          </Reveal>
         </div>
       </div>
     </section>

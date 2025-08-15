@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Clock, Headphones, Send, CheckCircle } from "lucide-react";
+import Reveal from "@/components/motion/Reveal";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -36,21 +37,24 @@ const Contact = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-apple-title text-black dark:text-white font-display mb-6 leading-tight">
-              Let's build something
-              <span className="block text-gradient-primary">
-                unforgettable.
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Ready to deploy cognition? Let's discuss your vision and architect a solution that scales.
-            </p>
-          </div>
+          <Reveal>
+            <div className="text-center mb-16">
+              <h2 className="text-apple-title text-black dark:text-white font-display mb-6 leading-tight">
+                Let's build something
+                <span className="block text-gradient-primary">
+                  unforgettable.
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Ready to deploy cognition? Let's discuss your vision and architect a solution that scales.
+              </p>
+            </div>
+          </Reveal>
 
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Form */}
-            <div className="apple-card-lg p-8">
+          <Reveal delay={0.1}>
+            <div className="grid lg:grid-cols-2 gap-16">
+              {/* Contact Form */}
+              <div className="apple-card-lg p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
@@ -191,6 +195,7 @@ const Contact = () => {
               </div>
             </div>
           </div>
+        </Reveal>
         </div>
       </div>
     </section>

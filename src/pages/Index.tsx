@@ -7,6 +7,7 @@ import Services from "@/components/Services";
 import About from "@/components/About";
 import Founders from "@/components/Founders";
 import Contact from "@/components/Contact";
+import Reveal from "@/components/motion/Reveal";
 
 const Index = () => {
   return (
@@ -17,27 +18,41 @@ const Index = () => {
         <Hero />
         
         <section id="why">
-          <WhyNexorus />
+          <Reveal>
+            <WhyNexorus />
+          </Reveal>
         </section>
         
-        <MockInterface />
+        <Reveal>
+          <MockInterface />
+        </Reveal>
         
-        <Testimonials />
+        <Reveal>
+          <Testimonials />
+        </Reveal>
         
         <section id="services">
-          <Services />
+          <Reveal>
+            <Services />
+          </Reveal>
         </section>
         
         <section id="about">
-          <About />
+          <Reveal>
+            <About />
+          </Reveal>
         </section>
         
         <section id="founders">
-          <Founders />
+          <Reveal>
+            <Founders />
+          </Reveal>
         </section>
         
         <section id="contact">
-          <Contact />
+          <Reveal>
+            <Contact />
+          </Reveal>
         </section>
       </main>
       
