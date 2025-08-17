@@ -485,3 +485,272 @@
     }
   }
 }
+
+/* Add these mobile-specific optimizations to your CSS */
+
+/* Force hardware acceleration for animations */
+.motion-element {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Mobile-specific animation optimizations */
+@media (max-width: 768px) {
+  /* Disable expensive filters on mobile */
+  .motion-element {
+    filter: none !important;
+  }
+  
+  /* Reduce transform complexity on mobile */
+  .animate-fade-in-up {
+    animation: fade-in-up-mobile 0.4s ease-out;
+  }
+  
+  /* Simplified mobile fade-in without blur */
+  @keyframes fade-in-up-mobile {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Optimize gradient animations for mobile */
+  .bg-gradient-orb {
+    animation-duration: 8s;
+    filter: blur(40px);
+    opacity: 0.02;
+  }
+  
+  /* Reduce backdrop blur complexity */
+  .glassmorphism {
+    backdrop-filter: blur(10px) saturate(150%);
+  }
+  
+  .glassmorphism-ultra {
+    backdrop-filter: blur(15px) saturate(180%);
+  }
+  
+  /* Optimize scroll behavior for mobile */
+  body {
+    -webkit-overflow-scrolling: touch !important;
+    transform: translateZ(0);
+  }
+  
+  /* Prevent layout shifts during animations */
+  .container {
+    contain: layout style paint;
+  }
+}
+
+/* Touch device optimizations */
+@media (pointer: coarse) {
+  .hover-lift:hover {
+    transform: none; /* Disable hover effects on touch devices */
+  }
+  
+  /* Reduce animation complexity on touch devices */
+  .animate-marquee {
+    animation-duration: 60s;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .bg-gradient-orb {
+    animation: none;
+  }
+  
+  .text-gradient-slow,
+  .text-gradient-bold,
+  .bg-gradient-nexorus {
+    animation: none;
+  }
+}
+
+/* iOS Safari specific optimizations */
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    z-index: 0;
+  }
+  
+  /* Fix iOS scroll issues */
+  .motion-element {
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+/* Add these to your existing index.css - they fix mobile animation issues */
+
+/* Mobile-optimized reveal animations using CSS only */
+@media (max-width: 768px) {
+  /* CSS-only stagger effect for mobile */
+  .mobile-stagger > * {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all 0.4s ease-out;
+    animation: mobile-fade-in-up 0.5s ease-out forwards;
+  }
+  
+  .mobile-stagger > *:nth-child(1) { animation-delay: 0ms; }
+  .mobile-stagger > *:nth-child(2) { animation-delay: 100ms; }
+  .mobile-stagger > *:nth-child(3) { animation-delay: 200ms; }
+  .mobile-stagger > *:nth-child(4) { animation-delay: 300ms; }
+  .mobile-stagger > *:nth-child(5) { animation-delay: 400ms; }
+  .mobile-stagger > *:nth-child(6) { animation-delay: 500ms; }
+  .mobile-stagger > *:nth-child(7) { animation-delay: 600ms; }
+  .mobile-stagger > *:nth-child(8) { animation-delay: 700ms; }
+  .mobile-stagger > *:nth-child(9) { animation-delay: 800ms; }
+
+  @keyframes mobile-fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Disable complex animations on mobile */
+  .bg-gradient-orb {
+    animation: none;
+    opacity: 0.01;
+  }
+
+  /* Simplify gradients on mobile */
+  .text-gradient-slow,
+  .text-gradient-bold,
+  .bg-gradient-nexorus {
+    animation-duration: 8s;
+  }
+
+  /* Optimize backdrop filters */
+  .glassmorphism {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .dark .glassmorphism {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .glassmorphism-ultra {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .dark .glassmorphism-ultra {
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  /* Force hardware acceleration */
+  .apple-card,
+  .apple-card-lg,
+  nav {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
+  /* Optimize hover effects on mobile (disable them) */
+  .hover-lift:hover {
+    transform: none;
+  }
+
+  /* Smooth scroll optimization */
+  html {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
+    transform: translateZ(0);
+  }
+
+  /* Optimize navigation transitions */
+  nav {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Disable all hover effects on touch devices */
+  *:hover {
+    transform: none !important;
+    box-shadow: inherit !important;
+  }
+  
+  .hover-lift:hover {
+    transform: none !important;
+  }
+  
+  /* Optimize button interactions */
+  button:active,
+  .button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .mobile-stagger > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Performance optimizations */
+.motion-element,
+.apple-card,
+.apple-card-lg,
+[class*="reveal"],
+[class*="animate"] {
+  contain: layout;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-overflow-scrolling: touch;
+    -webkit-transform: translateZ(0);
+  }
+  
+  .glassmorphism,
+  .glassmorphism-ultra {
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
