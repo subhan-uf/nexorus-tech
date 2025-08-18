@@ -6,7 +6,7 @@ const founders = [
   {
     name: "Subhan Farooq",
     role: "Co-Founder",
-    image: "/Subhan.jpeg",
+    image: "/Subhan2.jpeg",
     linkedin: "https://www.linkedin.com/in/subhan-farooq/",
     github: "https://github.com/subhan-uf",
     expertise: [
