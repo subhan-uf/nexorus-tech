@@ -33,7 +33,6 @@ setTimeout(() => {
     document.documentElement.classList.add('mobile-device')
   }
 }, 100)
-
 // Handle resize events
 window.addEventListener('resize', handleResize)
 
