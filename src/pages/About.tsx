@@ -50,12 +50,12 @@ const About = () => {
     {
       name: "Subhan Farooq",
       role: "Co-Founder",
-      avatar: "SF"
+      avatar: "/Subhan2.jpeg"
     },
     {
       name: "Ahsan Toufiq",
       role: "Co-Founder",
-      avatar: "AT"
+      avatar: "/Ahsan.jpeg"
     },
 
   ];
@@ -169,9 +169,12 @@ const About = () => {
               {team.map((member, index) => (
                 <Reveal key={index}>
                   <div className="apple-card p-6 text-center hover-lift">
-                    <div className="w-20 h-20 bg-gradient-nexorus rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-white font-bold text-xl">{member.avatar}</span>
-                    </div>
+<img
+  src={member.avatar}
+  alt={member.name}
+  className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2 border-gray-200 dark:border-gray-700"
+/>
+
                     <h3 className="text-xl font-bold text-black dark:text-white font-display mb-2">
                       {member.name}
                     </h3>
