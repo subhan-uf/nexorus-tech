@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Reveal from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Clock, Tag, Search } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Tag, Search, AlertCircle } from "lucide-react";
 import { blogPosts } from "@/data/blogData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -19,6 +19,7 @@ const Blog = () => {
  const [newsletterEmail, setNewsletterEmail] = useState("");
  const [isSubscribing, setIsSubscribing] = useState(false);
  const [subscribed, setSubscribed] = useState(false);
+ const [subscribeError, setSubscribeError] = useState(false);
  const SCRIPT_URL = import.meta.env.VITE_GS_WEBAPP_URL || "";
 
  async function sendToSheet(payload: Record<string, string>) {
@@ -40,6 +41,7 @@ const Blog = () => {
    e.preventDefault();
    if (!newsletterEmail) return;
    setIsSubscribing(true);
+   setSubscribeError(false);
    try {
      await sendToSheet({
        type: "newsletter",
@@ -51,6 +53,12 @@ const Blog = () => {
      setTimeout(() => setSubscribed(false), 3000);
    } catch (err) {
      console.error("Subscribe failed", err);
+     setSubscribeError(true);
+     
+     // Reset error state after 5 seconds
+     setTimeout(() => {
+       setSubscribeError(false);
+     }, 5000);
    } finally {
      setIsSubscribing(false);
    }
@@ -259,13 +267,18 @@ const Blog = () => {
     />
     <Button
       type="submit"
-      variant="gradient"
+      variant={subscribeError ? "destructive" : "gradient"}
       size="lg"
       className="group [animation-duration:10s] before:[animation-duration:13s] after:[animation-duration:13s]"
       disabled={isSubscribing || subscribed}
     >
       {subscribed ? (
         "Subscribed"
+      ) : subscribeError ? (
+        <>
+          <AlertCircle className="mr-2 w-4 h-4" />
+          Failed - Try Again
+        </>
       ) : isSubscribing ? (
         "Subscribing..."
       ) : (

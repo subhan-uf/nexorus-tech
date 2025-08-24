@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Clock, Headphones, Send, CheckCircle } from "lucide-react";
+import { Clock, Headphones, Send, CheckCircle, AlertCircle } from "lucide-react";
 import Reveal from "@/components/motion/Reveal";
 
 const Contact = () => {
@@ -13,6 +13,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   
   // Use Vite environment variables (prefixed with VITE_)
   const SCRIPT_URL = import.meta.env.VITE_GS_WEBAPP_URL || '';
@@ -39,6 +40,7 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(false);
     
     try {
       await sendToSheet({
@@ -58,7 +60,12 @@ const Contact = () => {
       
     } catch (err) {
       console.error("Submit failed", err);
-      // You could add error state handling here if needed
+      setSubmitError(true);
+      
+      // Reset error state after 5 seconds
+      setTimeout(() => {
+        setSubmitError(false);
+      }, 5000);
     } finally {
       setIsSubmitting(false);
     }
@@ -142,7 +149,7 @@ const Contact = () => {
 
  <Button
    type="submit"
-   variant="gradient"
+   variant={submitError ? "destructive" : "gradient"}
    size="lg"
    className="w-full group [animation-duration:10s] before:[animation-duration:11s] after:[animation-duration:11s]"
    disabled={isSubmitting || submitted}
@@ -151,6 +158,11 @@ const Contact = () => {
      <>
        <CheckCircle className="mr-2 w-5 h-5" />
        Message Sent
+     </>
+   ) : submitError ? (
+     <>
+       <AlertCircle className="mr-2 w-5 h-5" />
+       Failed to Send - Try Again
      </>
    ) : (
      <>
