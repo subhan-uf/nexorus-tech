@@ -2,6 +2,8 @@ import Navigation from "@/components/Navigation";
 import Reveal from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ExternalLink, Github, Zap, Brain, Ghost, Database } from "lucide-react";
+import { Link } from "react-router-dom";
+import { redirectToContact } from "@/lib/utils";
 
 const Portfolio = () => {
   const projects = [
@@ -220,14 +222,16 @@ const Portfolio = () => {
             </Reveal>
             <Reveal delay={0.2}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="gradient" size="lg" className="group">
+                <Button variant="gradient" size="lg" className="group [animation-duration:10s] before:[animation-duration:13s] after:[animation-duration:13s]" onClick={redirectToContact}>
                   Start Your Project
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button variant="apple-white" size="lg">
-                  <Zap className="mr-2" />
-                  View Case Studies
-                </Button>
+                <Link to="/case-studies">
+                  <Button variant="apple-white" size="lg">
+                    <Zap className="mr-2" />
+                    View Case Studies
+                  </Button>
+                </Link>
               </div>
             </Reveal>
           </div>

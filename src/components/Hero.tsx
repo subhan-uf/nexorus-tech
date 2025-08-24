@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Zap, Brain } from "lucide-react";
 import Reveal from "@/components/motion/Reveal";
+import { redirectToContact } from "@/lib/utils";
 
 const Hero = () => {
   return (
@@ -35,11 +36,11 @@ const Hero = () => {
 
             <Reveal delay={0.1}>
               <div className="flex flex-col sm:flex-row gap-6">
-                <Button variant="gradient" size="xl" className="group [animation-duration:10s] before:[animation-duration:10s] after:[animation-duration:10s]">
+                <Button variant="gradient" size="xl" className="group [animation-duration:10s] before:[animation-duration:10s] after:[animation-duration:10s]" onClick={redirectToContact}>
                   Deploy a Protocol
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button variant="apple-white" size="xl" className="group">
+                <Button variant="apple-white" size="xl" className="group" onClick={redirectToContact}>
                   <Play className="mr-2" />
                   Book a Demo
                 </Button>

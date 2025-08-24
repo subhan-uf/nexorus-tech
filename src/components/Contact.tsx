@@ -11,20 +11,57 @@ const Contact = () => {
     email: '',
     project: ''
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-  };
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  
+  // Use Vite environment variables (prefixed with VITE_)
+  const SCRIPT_URL = import.meta.env.VITE_GS_WEBAPP_URL || '';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
+  };
+  async function sendToSheet(payload: Record<string, string>) {
+    // If no SCRIPT_URL is configured, just log the submission
+    if (!SCRIPT_URL) {
+      console.log('Form submission:', payload);
+      return;
+    }
+    
+    // Avoid CORS preflight by using x-www-form-urlencoded
+    const body = new URLSearchParams(payload);
+    // We don't read the response body (opaque). If fetch resolves, we assume success.
+    await fetch(SCRIPT_URL, { method: "POST", body });
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      await sendToSheet({
+        type: "lead",
+        name: formData.name,
+        email: formData.email,
+        project: formData.project,
+        source: window.location.pathname,
+      });
+      setSubmitted(true);
+      
+      // Reset form after successful submission
+      setTimeout(() => {
+        setFormData({ name: '', email: '', project: '' });
+        setSubmitted(false);
+      }, 3000);
+      
+    } catch (err) {
+      console.error("Submit failed", err);
+      // You could add error state handling here if needed
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -103,25 +140,27 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button 
-                  type="submit" 
-                  variant="gradient" 
-                  size="lg" 
-                  className="w-full group [animation-duration:10s] before:[animation-duration:11s] after:[animation-duration:11s]"
-                  disabled={isSubmitted}
-                >
-                  {isSubmitted ? (
-                    <>
-                      <CheckCircle className="mr-2 w-5 h-5" />
-                      Message Sent
-                    </>
-                  ) : (
-                    <>
-                      Deploy Now
-                      <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </>
-                  )}
-                </Button>
+ <Button
+   type="submit"
+   variant="gradient"
+   size="lg"
+   className="w-full group [animation-duration:10s] before:[animation-duration:11s] after:[animation-duration:11s]"
+   disabled={isSubmitting || submitted}
+ >
+   {submitted ? (
+     <>
+       <CheckCircle className="mr-2 w-5 h-5" />
+       Message Sent
+     </>
+   ) : (
+     <>
+       {isSubmitting ? "Sending..." : "Deploy Now"}
+       {!isSubmitting && (
+         <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+       )}
+     </>
+   )}
+ </Button>
               </form>
             </div>
 

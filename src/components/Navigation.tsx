@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Brain, Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
+import { redirectToContact } from "@/lib/utils";
 // import { useSmoothScroll } from "@/hooks/use-lenis";
 
 const Navigation = () => {
@@ -52,6 +53,7 @@ const Navigation = () => {
     { label: "Services", href: "#services" },
     { label: "About", href: "/about" },
     { label: "Portfolio", href: "/portfolio" },
+    { label: "Case Studies", href: "/case-studies" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "#contact" }
   ];
@@ -155,10 +157,10 @@ const Navigation = () => {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center space-x-4">
             <DarkModeToggle />
-            <Button variant="apple-white" size="sm">
+            <Button variant="apple-white" size="sm" onClick={redirectToContact}>
               Book Demo
             </Button>
-            <Button variant="gradient" size="sm" className="group [animation-duration:10s] before:[animation-duration:13s] after:[animation-duration:13s]">
+            <Button variant="gradient" size="sm" className="group [animation-duration:10s] before:[animation-duration:13s] after:[animation-duration:13s]" onClick={redirectToContact}>
               Deploy Now
             </Button>
           </div>
@@ -222,10 +224,10 @@ const Navigation = () => {
                 <div className="flex justify-center">
                   <DarkModeToggle />
                 </div>
-                <Button variant="apple-white" size="sm" className="w-full">
+                <Button variant="apple-white" size="sm" className="w-full" onClick={redirectToContact}>
                   Book Demo
                 </Button>
-                <Button variant="gradient" size="sm" className="w-full group [animation-duration:7s] before:[animation-duration:7s] after:[animation-duration:7s]">
+                <Button variant="gradient" size="sm" className="w-full group [animation-duration:7s] before:[animation-duration:7s] after:[animation-duration:7s]" onClick={redirectToContact}>
                   Deploy Now
                 </Button>
               </div>

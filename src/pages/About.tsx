@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Reveal from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Target, Zap, Shield } from "lucide-react";
+import { redirectToContact } from "@/lib/utils";
 
 const About = () => {
   const values = [
@@ -199,11 +200,11 @@ const About = () => {
             </Reveal>
             <Reveal delay={0.2}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="gradient" size="lg" className="group [animation-duration:10s] before:[animation-duration:13s] after:[animation-duration:13s]">
+                <Button variant="gradient" size="lg" className="group [animation-duration:10s] before:[animation-duration:13s] after:[animation-duration:13s]" onClick={redirectToContact}>
                   Start a Project
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button variant="apple-white" size="lg">
+                <Button variant="apple-white" size="lg" onClick={redirectToContact}>
                   <Users className="mr-2" />
                   Join Our Team
                 </Button>

@@ -1,6 +1,7 @@
 import { Linkedin, Globe, Code, Brain, Cloud, Zap, Database, Rocket, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Reveal from "@/components/motion/Reveal";
+import { redirectToContact } from "@/lib/utils";
 
 const founders = [
   {
@@ -189,7 +190,7 @@ const Founders = () => {
               we're building systems that think, learn, and evolve with your business.
             </p>
             <div className="mt-8 flex justify-center">
-              <Button variant="gradient" size="lg" className="group [animation-duration:10s] before:[animation-duration:13s] after:[animation-duration:13s]">
+              <Button variant="gradient" size="lg" className="group [animation-duration:10s] before:[animation-duration:13s] after:[animation-duration:13s]" onClick={redirectToContact}>
                 <Rocket className="mr-2 w-5 h-5" />
                 Join Our Mission
               </Button>
