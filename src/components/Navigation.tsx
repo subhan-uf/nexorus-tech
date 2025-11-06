@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Brain, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
 import { redirectToContact } from "@/lib/utils";
@@ -109,10 +109,8 @@ const Navigation = () => {
       <div className="w-full px-3 sm:px-6">
         <div className="flex items-center justify-between h-20 min-w-0">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group cursor-pointer min-w-0 flex-shrink-0">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-nexorus [animation-duration:24s] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-              <Brain className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
-            </div>
+          <Link to="/" className="flex items-center space-x-1 sm:space-x-2 group cursor-pointer min-w-0 flex-shrink-0">
+            <img src="/logo.png" alt="Nexorus Logo" className="w-12 h-12 sm:w-16 sm:h-16 group-hover:scale-110 transition-transform duration-300 flex-shrink-0 object-contain" />
             <span className="text-lg sm:text-2xl font-bold font-display text-gradient-slow truncate">
               NEXORUS
             </span>
