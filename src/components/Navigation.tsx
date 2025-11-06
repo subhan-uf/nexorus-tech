@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef, type MouseEvent as ReactMouseEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -6,60 +6,90 @@ import DarkModeToggle from "./DarkModeToggle";
 import { redirectToContact } from "@/lib/utils";
 // import { useSmoothScroll } from "@/hooks/use-lenis";
 
+declare global {
+  interface WindowEventMap {
+    "lenis-scroll": CustomEvent<void>;
+  }
+}
+
+const NAV_ITEMS = [
+  { label: "Why Nexorus", href: "#why" },
+  { label: "Services", href: "#services" },
+  { label: "About", href: "/about" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "#contact" }
+] as const;
+
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const navRef = useRef<HTMLElement | null>(null);
+
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
 
   useEffect(() => {
+    let ticking = false;
+    const updateScrollState = () => setIsScrolled(window.scrollY > 50);
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        updateScrollState();
+        ticking = false;
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    updateScrollState();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("lenis-scroll", handleScroll as EventListener);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("lenis-scroll", handleScroll as EventListener);
+    };
   }, []);
 
   // Close mobile menu when clicking outside or scrolling
   useEffect(() => {
-    const handleClickOutside = () => {
-      if (isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    const handleScroll = () => {
-      if (isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
     if (isMobileMenuOpen) {
-      document.addEventListener('click', handleClickOutside);
-      document.addEventListener('scroll', handleScroll);
-      document.addEventListener('touchmove', handleScroll);
+      const handleClickOutside = (event: Event) => {
+        const target = event.target as Node | null;
+        if (navRef.current && target && navRef.current.contains(target)) {
+          return;
+        }
+        closeMobileMenu();
+      };
+
+      const handleScroll = () => {
+        closeMobileMenu();
+      };
+
+      const previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+
+      document.addEventListener("click", handleClickOutside, true);
+      document.addEventListener("scroll", handleScroll, { passive: true });
+      document.addEventListener("touchmove", handleScroll, { passive: true });
+
+      return () => {
+        document.removeEventListener("click", handleClickOutside, true);
+        document.removeEventListener("scroll", handleScroll);
+        document.removeEventListener("touchmove", handleScroll);
+        document.body.style.overflow = previousOverflow;
+      };
     }
 
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-      document.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('touchmove', handleScroll);
-    };
-  }, [isMobileMenuOpen]);
-
-  const navItems = [
-    { label: "Why Nexorus", href: "#why" },
-    { label: "Services", href: "#services" },
-    { label: "About", href: "/about" },
-    { label: "Portfolio", href: "/portfolio" },
-    { label: "Case Studies", href: "/case-studies" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "#contact" }
-  ];
+    return undefined;
+  }, [closeMobileMenu, isMobileMenuOpen]);
 
   // --- NEW: smooth-scroll handler for same-page hashes (works even if not on "/")
-  const handleHashClick = (e: React.MouseEvent, hash: string) => {
+  const handleHashClick = useCallback((e: ReactMouseEvent, hash: string) => {
     e.preventDefault();
     e.stopPropagation();
     
@@ -90,18 +120,19 @@ const Navigation = () => {
     } else {
       scrollToHash();
     }
-    setIsMobileMenuOpen(false);
-  };
+    closeMobileMenu();
+  }, [closeMobileMenu, location.pathname, navigate]);
 
   // Handle mobile menu toggle
-  const handleMobileMenuToggle = (e: React.MouseEvent) => {
+  const handleMobileMenuToggle = useCallback((e: ReactMouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+    setIsMobileMenuOpen((open) => !open);
+  }, []);
 
   return (
     <nav
+      ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-screen max-w-screen ${
         isScrolled ? "glassmorphism-ultra" : "glassmorphism"
       }`}
@@ -118,7 +149,7 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => {
+            {NAV_ITEMS.map((item) => {
               const isHash = item.href.startsWith('#');
               const isActive = location.pathname === item.href || 
                 (isHash && location.pathname === '/' && location.hash === item.href);
@@ -185,7 +216,7 @@ const Navigation = () => {
         >
           <div className="w-full px-3 sm:px-6 py-6 max-w-7xl mx-auto">
             <div className="space-y-4">
-              {navItems.map((item) => {
+              {NAV_ITEMS.map((item) => {
                 const isHash = item.href.startsWith('#');
                 const isActive = location.pathname === item.href || 
                   (isHash && location.pathname === '/' && location.hash === item.href);
@@ -212,7 +243,7 @@ const Navigation = () => {
                         ? 'text-gradient-primary' 
                         : 'text-gray-800 dark:text-gray-100 hover:text-black dark:hover:text-white'
                     }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={closeMobileMenu}
                   >
                     {item.label}
                   </Link>

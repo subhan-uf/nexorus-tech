@@ -7,6 +7,9 @@
     <meta name="description" content="Nexorus - AI-Powered Software Development and Automation" />
     <meta name="author" content="Nexorus" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/logo.png?v=1" />
     <link rel="icon" type="image/x-icon" href="/logo.png?v=1" />
@@ -25,31 +28,30 @@
 
   <body>
     <div id="root"></div>
+    <vapi-widget
+      public-key="dd9d96ce-0266-438e-aae0-0b411d8cefb4"
+      assistant-id="ac302938-16e1-47bb-8f6c-7fb2f0248dbb"
+      mode="voice"
+      theme="dark"
+      base-bg-color="#000000"
+      accent-color="#c068c8"
+      cta-button-color="#000000"
+      cta-button-text-color="#ffffff"
+      border-radius="small"
+      size="compact"
+      position="bottom-right"
+      title="TALK WITH NEXORUS AI"
+      start-button-text="Call Nexorus AI H"
+      end-button-text="End Call"
+      chat-first-message="Hey, How can I help you today?"
+      chat-placeholder="Type your message..."
+      voice-show-transcript="false"
+      consent-required="true"
+      consent-title="Terms and conditions"
+      consent-content="By clicking Agree, and each time I interact with this AI agent, I consent to the recording, storage, and sharing of my communications with third-party service providers, and as otherwise described in our Terms of Service."
+      consent-storage-key="vapi_widget_consent"
+    ></vapi-widget>
     <script type="module" src="/src/main.tsx"></script>
+    <script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async type="text/javascript"></script>
   </body>
 </html>
-<vapi-widget
-  public-key="dd9d96ce-0266-438e-aae0-0b411d8cefb4"
-  assistant-id="ac302938-16e1-47bb-8f6c-7fb2f0248dbb"
-  mode="voice"
-  theme="dark"
-  base-bg-color="#000000"
-  accent-color="#c068c8"
-  cta-button-color="#000000"
-  cta-button-text-color="#ffffff"
-  border-radius="small"
-  size="compact"
-  position="bottom-right"
-  title="TALK WITH NEXORUS AI"
-  start-button-text="Call Nexorus AI H"
-  end-button-text="End Call"
-  chat-first-message="Hey, How can I help you today?"
-  chat-placeholder="Type your message..."
-  voice-show-transcript="false"
-  consent-required="true"
-  consent-title="Terms and conditions"
-  consent-content="By clicking Agree, and each time I interact with this AI agent, I consent to the recording, storage, and sharing of my communications with third-party service providers, and as otherwise described in our Terms of Service."
-  consent-storage-key="vapi_widget_consent"
-></vapi-widget>
-
-<script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async type="text/javascript"></script>

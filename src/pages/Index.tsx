@@ -1,15 +1,28 @@
+import { Suspense, useEffect, lazy } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import WhyNexorus from "@/components/WhyNexorus";
-import MockInterface from "@/components/MockInterface";
-import Testimonials from "@/components/Testimonials";
-import Services from "@/components/Services";
-import About from "@/components/About";
-import Founders from "@/components/Founders";
-import Contact from "@/components/Contact";
 import Reveal from "@/components/motion/Reveal";
 
+const MockInterface = lazy(() => import("@/components/MockInterface"));
+const Testimonials = lazy(() => import("@/components/Testimonials"));
+const Services = lazy(() => import("@/components/Services"));
+const AboutSection = lazy(() => import("@/components/About"));
+const Founders = lazy(() => import("@/components/Founders"));
+const Contact = lazy(() => import("@/components/Contact"));
+
 const Index = () => {
+  useEffect(() => {
+    void Promise.all([
+      import("@/components/MockInterface"),
+      import("@/components/Testimonials"),
+      import("@/components/Services"),
+      import("@/components/About"),
+      import("@/components/Founders"),
+      import("@/components/Contact"),
+    ]);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <Navigation />
@@ -23,36 +36,48 @@ const Index = () => {
           </Reveal>
         </section>
         
-        <Reveal>
-          <MockInterface />
-        </Reveal>
+        <Suspense fallback={null}>
+          <Reveal>
+            <MockInterface />
+          </Reveal>
+        </Suspense>
         
-        <Reveal>
-          <Testimonials />
-        </Reveal>
+        <Suspense fallback={null}>
+          <Reveal>
+            <Testimonials />
+          </Reveal>
+        </Suspense>
         
         <section id="services">
-          <Reveal>
-            <Services />
-          </Reveal>
+          <Suspense fallback={null}>
+            <Reveal>
+              <Services />
+            </Reveal>
+          </Suspense>
         </section>
         
         <section id="about">
-          <Reveal>
-            <About />
-          </Reveal>
+          <Suspense fallback={null}>
+            <Reveal>
+              <AboutSection />
+            </Reveal>
+          </Suspense>
         </section>
         
         <section id="founders">
-          <Reveal>
-            <Founders />
-          </Reveal>
+          <Suspense fallback={null}>
+            <Reveal>
+              <Founders />
+            </Reveal>
+          </Suspense>
         </section>
         
         <section id="contact">
-          <Reveal>
-            <Contact />
-          </Reveal>
+          <Suspense fallback={null}>
+            <Reveal>
+              <Contact />
+            </Reveal>
+          </Suspense>
         </section>
       </main>
       

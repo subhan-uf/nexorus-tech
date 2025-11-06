@@ -1,6 +1,8 @@
 import Lenis from '@studio-freight/lenis'
 
-let lenis: Lenis | null = null
+type LenisWithEmitter = Lenis & { __emitScroll?: () => void }
+
+let lenis: LenisWithEmitter | null = null
 
 const isMobile = () => {
   if (typeof window === 'undefined') return false
@@ -37,21 +39,31 @@ export const initLenis = () => {
     syncTouchLerp: 0.1,
   })
 
-  function raf(time: number) {
+  const raf = (time: number) => {
     lenis?.raf(time)
     requestAnimationFrame(raf)
   }
 
   requestAnimationFrame(raf)
 
-  // Add scroll event listener for intersection observer performance
-  lenis.on('scroll', (e) => {
-    // Throttle scroll events for better performance
-    if (e.animate) {
-      // Only update on actual scroll, not during smooth scroll animation
+  // Throttle scroll events for better performance
+  let scrolling = false
+  const emitScroll = () => {
+    if (scrolling) return
+    scrolling = true
+    requestAnimationFrame(() => {
       window.dispatchEvent(new Event('scroll'))
-    }
-  })
+      window.dispatchEvent(new CustomEvent('lenis-scroll'))
+      scrolling = false
+    })
+  }
+
+  lenis.__emitScroll = emitScroll
+  lenis.on('scroll', emitScroll)
+
+  if (typeof window !== 'undefined') {
+    ;(window as any).lenis = lenis
+  }
 
   return lenis
 }
@@ -60,11 +72,18 @@ export const getLenis = () => lenis
 
 export const destroyLenis = () => {
   if (lenis) {
+    if (lenis.__emitScroll) {
+      lenis.off('scroll', lenis.__emitScroll)
+      delete lenis.__emitScroll
+    }
     lenis.destroy()
     lenis = null
     // Re-enable normal scroll
     document.documentElement.classList.remove('lenis')
     document.body.style.overflow = 'auto'
+    if (typeof window !== 'undefined' && (window as any).lenis) {
+      delete (window as any).lenis
+    }
   }
 }
 
